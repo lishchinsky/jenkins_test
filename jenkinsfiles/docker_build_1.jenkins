@@ -26,8 +26,6 @@ pipeline {
                 sh '''
                 docker tag toolbox:latest 10.100.71.33/test/toolbox:build
                 '''
-            }
-            steps {
                 echo " ============== start pushing image =================="
                 sh '''
                 docker push 10.100.71.33/test/toolbox:build
