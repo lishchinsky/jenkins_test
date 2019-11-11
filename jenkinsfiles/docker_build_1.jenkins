@@ -20,11 +20,17 @@ pipeline {
                 }
             }
         }
-        stage("docker push") {
+        stage("docker tag and push") {
+            steps {
+                echo " ============== start tagging image =================="
+                sh '''
+                docker tag toolbox:latest 10.100.71.33/test/toolbox:build
+                '''
+            }
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
-                docker push toolbox:latest
+                docker push 10.100.71.33/test/toolbox:build
                 '''
             }
         }
